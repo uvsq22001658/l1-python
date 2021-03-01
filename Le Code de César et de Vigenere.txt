@@ -1,0 +1,12 @@
+Le Code de César et de Vigenere
+Bibliothèque crypto antique
+
+- On veut pouvoir chiffrer, déchiffrer  un texte sous le format .txt
+- Le code ASCII, traitement de texte
+- Python en ligne de commande, arguments en ligne de commandes
+- Cryptanalyse: recherche exhaustive et analyse de fréquence
+- Chiffrement de Vigenere, puis déchiffrement et cryptanalyse
+
+
+
+https://www.pythonforbeginners.com/files/reading-and-writing-files-in-python
