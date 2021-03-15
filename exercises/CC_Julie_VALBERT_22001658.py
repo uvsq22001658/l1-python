@@ -4,17 +4,15 @@ racine = tk.Tk()
 mon_canvas = tk.Canvas(racine, width=600, height=600, background="white")
 mon_canvas.grid(row=2, column=0)
 
-bouton_annuler = tk.Button(racine, text="Annuler")
-bouton_annuler.grid(row=1, column=0)
-
 objets = []
 
 
 def carres():
-    carre_vert = mon_canvas.create_rectangle(0, 0, 50, 50, fill="green")
-    carre_bleu = mon_canvas.create_rectangle(50, 0, 100, 50, fill="blue")
-    carre_blanc = mon_canvas.create_rectangle(100, 0, 150, 50, fill="white")
+    mon_canvas.create_rectangle(0, 0, 50, 50, fill="green")
+    mon_canvas.create_rectangle(50, 0, 100, 50, fill="blue")
+    mon_canvas.create_rectangle(100, 0, 150, 50, fill="white")
     return
+
 
 carres()
 cercle = mon_canvas.create_oval(200, 200, 400, 400, fill="red")
@@ -32,13 +30,22 @@ def clic(event):
         elif event.x > 100 and event.x < 150:
             cercle = mon_canvas.create_oval(200, 200, 400, 400, fill="white")
             objets.append(cercle)
-        else :
+        else:
             cercle = mon_canvas.create_oval(200, 200, 400, 400, fill="red")
-    else :
+    else:
         cercle = mon_canvas.create_oval(200, 200, 400, 400, fill="red")
     return
 
+
 mon_canvas.bind('<Button-1>', clic)
 
+
+def annuler():
+    mon_canvas.delete(objets[len(objets) - 1])
+    del objets[len(objets) - 1]
+
+
+bouton_annuler = tk.Button(racine, text="Annuler", command=annuler)
+bouton_annuler.grid(row=1, column=0)
 
 racine.mainloop()

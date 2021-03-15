@@ -10,9 +10,6 @@ y_precedent = 0
 objets = []
 actif = True
 
-bouton_pause = tk.Button(racine, text="Pause")
-bouton_pause.grid(row=1, column=0)
-
 
 def effacer():
     if len(objets) > 0:
@@ -25,8 +22,12 @@ def effacer():
 def pause():
     global actif
     global bouton_pause
-    actif = False
-    mon_canvas.itemconfigure(bouton_pause, text="Restart")
+    if actif:
+        actif = False
+        mon_canvas.itemconfigure(bouton_pause, text="Restart")
+    else:
+        actif = True
+        mon_canvas.itemconfigure(bouton_pause, text="Pause")
     return
 
 
@@ -55,6 +56,7 @@ def clic(event):
 
 mon_canvas.bind('<Button-1>', clic)
 
-mon_canvas.itemconfigure(bouton_pause, command=pause)
+bouton_pause = tk.Button(racine, text="Pause", command=pause)
+bouton_pause.grid(row=1, column=0)
 
 racine.mainloop()

@@ -14,9 +14,9 @@ def clic(event):
     global rectangle
     global rouge
     global actif
-    if actif == True:
+    if actif:
         if event.x > 100 and event.x < 400 and event.y > 200 and event.y < 300:
-            if rouge == True:
+            if rouge:
                 mon_canvas.itemconfigure(rectangle, fill="blue")
                 rouge = False
             else:
