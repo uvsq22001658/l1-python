@@ -5,10 +5,12 @@ import tkinter as tk
 
 LARGEUR = 600
 HAUTEUR = 400
-
+nb_rebond = 0
+identifiant = 0
 
 ###################
 # Fonctions
+
 
 def creer_balle():
     """Dessine un rond bleu et retourne son identifiant
@@ -24,18 +26,26 @@ def creer_balle():
 
 def mouvement():
     """Déplace la balle et ré-appelle la fonction avec un compte-à-rebours"""
-    rebond()
-    canvas.move(balle[0], balle[1], balle[2])
-    canvas.after(20, mouvement)
+    global balle
+    global nb_rebond
+    global identifiant
+    while nb_rebond <= 30:
+        rebond()
+        canvas.move(balle[0], balle[1], balle[2])
+        identifiant = canvas.after(20, mouvement)
+        canvas.move(mur_1, 1, 0)
+        canvas.move(mur_2, 1, 0)
 
 
 def rebond():
     """Fait rebondir la balle sur les bords du canevas"""
     global balle
+    global nb_rebond
+    nb_rebond += 1
     x0, y0, x1, y1 = canvas.coords(balle[0])
-    if x0 <= 0 or x1 >= 600:
+    if x0 <= xa or x1 >= xc:
         balle[1] = -balle[1]
-    if y0 <= 0 or y1 >= 400:
+    if y0 <= ya or y1 >= yc:
         balle[2] = -balle[2]
 
 
@@ -45,6 +55,12 @@ def rebond():
 racine = tk.Tk()
 canvas = tk.Canvas(racine, bg="black", width=600, height=400)
 canvas.grid()
+
+mur_1 = canvas.create_line(1, 0, 1, 400, fill="white")
+mur_2 = canvas.create_line(150, 0, 150, 400, fill="white")
+xa, ya, xb, yb = canvas.coords(mur_1)
+xc, yc, xd, yd = canvas.coords(mur_2)
+
 balle = creer_balle()
 mouvement()
 racine.mainloop()
