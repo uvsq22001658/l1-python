@@ -25,9 +25,9 @@ def diminue(event):
     if actif:
         if (event.x >= abscisse_1) and (event.x <= abscisse_2) and
            (event.y >= ordonnee_1) and (event.y <= ordonnee_2) and (cote_carre >= 20):
-            Canvas.itemconfigure(carre_rouge, abscisse_1 += 5, ordonnee_1 += 5,
+                Canvas.itemconfigure(carre_rouge, abscisse_1 += 5, ordonnee_1 += 5,
                                  abscisse_2 -= 5, ordonnee_2 -= 5)
-            cote_carre -= 10
+                cote_carre -= 10
     return
 
 
@@ -56,7 +56,7 @@ canvas.bind('<Button-1>', augmente)
 
 def pause():
     global actif
-    if actif = True:
+    if actif:
         actif = False
         canvas.itemconfigure(bouton_pause, text="Restart")
     else:
