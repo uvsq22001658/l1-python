@@ -119,9 +119,9 @@ print(texte_2)
 # Déchiffrage du texte 3
 
 # Grâce au déchiffrage du texte 2, on sait que la clé est de taille inconnue
-# On sait aussi que certaines lettres ne sont pas codées, celles qui se trouvent à la fin de l'alphabet
+# On sait aussi que certaines lettres ne sont pas codées (en fin d'alphabet)
 # On remarque que certains mots ne sont composés que d'une seule lettre : "e" et "c"
-# Les mots de 1 lettre courants en Français sont "y" et "a" (et "à")
+# Les mots de 1 lettre courants en Français sont "y" et "a"
 # On suppose que "y" n'est pas codée car elle se trouve à la fin de l'alphabet
 # Donc les mots de 1 lettre seraient "a"
 # On compte le nombre de caractères entre "c" et "c" : il y en a 20
@@ -135,16 +135,14 @@ print(texte_2)
 # On essaye avec une clé de taille 4
 # On a supposé que "c" en positions 45 et 65 seraient "a", donc il y aurait eu un décalage de 3
 # La 1ère lettre de la clé serait donc "c"
-# On a aussi supposé que "e" et position 7 serait "a", donc il y aurait eu un décalage de 5
+# On a aussi supposé que "e" en position 7 serait "a", donc il y aurait eu un décalage de 5
 # La 3ème lettre (7 = 4 + 3) de la clé serait donc "e"
-# On essaye le clé "clef" et on est capable de déchiffrer le texte mais des caractères ne sont pas bien déchiffrés
+# On essaye la clé "clef" et on est capable de déchiffrer le texte mais des caractères ne sont pas bien déchiffrés
 # Un caractère sur quatre est incohérent
 # On devine que "brapo" est "bravo" donc le "p" en position 4 est un v
 # Dans le texte chiffré, le "p" est un "u"
 # Il doit devenir un "v", donc la 4ème lettre de la clé doit créer un décalage de -1 lors du chiffrage
 # La quatrième lettre de la clé est donc "z"
 # On en conclut que la clé est "clez" et on utilise la fonction dechiffrer
-
-
 texte_3 = dechiffrer(t3, "clez")
 print(texte_3)
